@@ -14,13 +14,13 @@ def run_fit(model, X_train, y_train, X_test, y_test):
 	checkpoint = ModelCheckpoint(
 		filename,
 		monitor='val_loss',
-		verbose=1,
+		verbose=2,
 		mode='min'
 	)
 
 	model.fit(
 		X_train, y_train,
-		epochs=30,
+		epochs=10,
 		batch_size=10,
 	    validation_data=(X_test, y_test),
 		callbacks=[checkpoint],
@@ -52,10 +52,10 @@ def run_train(full_path, train_path, test_path):
 
 	# define model
 	model = define_model(
-		src_vocab=trn_vocab_size,
-		tar_vocab=eng_vocab_size,
-		src_timesteps=trn_len,
-		tar_timesteps=eng_len,
+		source_vocab=trn_vocab_size,
+		translate_vocab=eng_vocab_size,
+		source_timesteps=trn_len,
+		translate_timesteps=eng_len,
 		n_units=256,
 	)
 

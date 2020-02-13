@@ -12,16 +12,18 @@ os.environ['KMP_WARNINGS'] = 'off'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # define NMT model
-def define_model(src_vocab, tar_vocab, src_timesteps, tar_timesteps,
-    n_units, show_summary=False):
+def define_model(source_vocab, translate_vocab,
+    source_timesteps, translate_timesteps,
+    n_units, show_summary=False
+):
 
     model = Sequential([
-        Embedding(src_vocab, n_units, input_length=src_timesteps,
+        Embedding(source_vocab, n_units, input_length=source_timesteps,
             mask_zero=True),
         LSTM(n_units),
-        RepeatVector(tar_timesteps),
+        RepeatVector(translate_timesteps),
         LSTM(n_units, return_sequences=True),
-        TimeDistributed(Dense(tar_vocab, activation='softmax'))
+        TimeDistributed(Dense(translate_vocab, activation='softmax'))
     ])
 
     # Compile the model

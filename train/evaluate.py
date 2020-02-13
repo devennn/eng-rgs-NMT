@@ -41,8 +41,6 @@ def run_evaluate(full_path, train_path, test_path):
     file_path = os.path.join(path, 'result', 'model.h5')
     model = load_model(file_path)
     # test on some training sequences
-    print('train')
     evaluate_accuracy(model, eng_tokenizer, X_train, train)
     # test on some test sequences
-    print('test')
     evaluate_accuracy(model, eng_tokenizer, X_test, test)

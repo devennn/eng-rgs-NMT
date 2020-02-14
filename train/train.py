@@ -2,10 +2,12 @@ import numpy as np
 from tensorflow.keras.callbacks import ModelCheckpoint
 from pathlib import Path
 import os
+import sys
 
 from .define_model import define_model
 from .encoding import prepare_token, encode_output, encode_sequences
 from .utils import load_clean_sentences
+from .memory import get_model_memory_usage
 
 def run_fit(model, X_train, y_train, X_test, y_test):
 
@@ -58,5 +60,10 @@ def run_train(full_path, train_path, test_path):
 		translate_timesteps=eng_len,
 		n_units=256,
 	)
+
+	# Check memory consumption
+	memory = get_model_memory_usage(batch_size, model)
+	print('Memory Usage: {}'.format(memory))
+	sys.exit()
 
 	run_fit(model, X_train, y_train, X_test, y_test)

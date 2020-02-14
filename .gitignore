@@ -1,2 +1,7 @@
 /preprocess/__pycache__/
 /train/__pycache__/
+/clean_dataset/
+/dataset/
+.floydexpt
+.floydignore
+floyd.yml

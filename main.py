@@ -5,9 +5,19 @@ from pathlib import Path
 from preprocess import preprocess, split
 from train import train, evaluate
 
-# Load and preprocess dataset
-abs_path = Path('dataset').parent.absolute()
-data_fname = os.path.join(abs_path, 'dataset', sys.argv[1])
+# # Load and preprocess dataset local
+# abs_path = Path('dataset').parent.absolute()
+# data_fname = os.path.join(abs_path, 'dataset', sys.argv[1])
+
+# Load and preprocess dataset on floydhub
+abs_path = Path('.').parent.absolute()
+dir = os.listdir('/malay/')
+print(dir)
+data_fname = os.path.join('/malay', sys.argv[1])
+
+print('Reading from: {}'.format(data_fname))
+
+
 fname = sys.argv[1].split('.')
 save_fname = fname[0] + '.pkl'
 preprocess.load_dataset(data_fname, save_fname)

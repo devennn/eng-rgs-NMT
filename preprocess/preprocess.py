@@ -17,7 +17,8 @@ def load_file(filename):
 def save_clean_data(sentences, filename):
 	path = Path('clean_dataset').parent.absolute()
 	path = os.path.join(path, 'clean_dataset', filename)
-	pickle.dump(sentences, open(path, 'wb'))
+	with open(path, 'wb+') as f:
+		pickle.dump(sentences, f)
 	print('Saved: %s' % filename)
 
 def load_dataset(data_fname, save_fname):

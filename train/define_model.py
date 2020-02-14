@@ -17,14 +17,13 @@ def define_model(source_vocab, translate_vocab,
     n_units, show_summary=False
 ):
 
-    model = Sequential([
-        Embedding(source_vocab, n_units, input_length=source_timesteps,
-            mask_zero=True),
-        LSTM(n_units),
-        RepeatVector(translate_timesteps),
-        LSTM(n_units, return_sequences=True),
-        TimeDistributed(Dense(translate_vocab, activation='softmax'))
-    ])
+    model = Sequential()
+    model.add(Embedding(source_vocab, n_units, input_length=source_timesteps,
+        mask_zero=True))
+    model.add(LSTM(n_units))
+    model.add(RepeatVector(translate_timesteps))
+    model.add(LSTM(n_units, return_sequences=True))
+    model.add(TimeDistributed(Dense(translate_vocab, activation='softmax')))
 
     # Compile the model
     model.compile(

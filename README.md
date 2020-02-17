@@ -1,5 +1,9 @@
-# Rungus - English Translator Model
+# Keras Neural Model Translator
 
-- Using Neural Model Translator
-- Keras with Tensorflow backend
-- [Rungus - English language corpus](https://github.com/devennn/rungus-language-corpus)
+### Translator model for
+- en - drg
+- en - ms
+
+### Dataset:
+- [Rungus - English corpus](https://github.com/devennn/rungus-language-corpus)
+- [Malay - English corpus](https://github.com/huseinzol05/Malaya-Dataset/blob/master/english-malay/english-malay1.json)

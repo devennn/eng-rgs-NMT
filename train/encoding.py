@@ -1,4 +1,6 @@
 import numpy as np
+import gc
+import sys
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
@@ -27,8 +29,10 @@ of each word in the vocabulary as output.
 def encode_output(sequences, vocab_size):
 	ylist = list()
 	for sequence in sequences:
-		encoded = to_categorical(sequence, num_classes=vocab_size)
+		encoded = to_categorical(sequence, num_classes=vocab_size, dtype='int8')
 		ylist.append(encoded)
+		del encoded
+		gc.collect()
 	y = np.array(ylist)
 	y = y.reshape(sequences.shape[0], sequences.shape[1], vocab_size)
 	return y

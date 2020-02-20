@@ -5,15 +5,17 @@ from pathlib import Path
 from preprocess import preprocess, split
 from train import train, evaluate
 
-# # Load and preprocess dataset local
-# abs_path = Path('dataset').parent.absolute()
-# data_fname = os.path.join(abs_path, 'dataset', sys.argv[1])
+if sys.argv[2] == 'local':
+    # Load and preprocess dataset local
+    abs_path = Path('.').parent.absolute()
+    data_fname = os.path.join(abs_path, 'dataset', sys.argv[1])
 
-# Load and preprocess dataset on floydhub
-abs_path = Path('.').parent.absolute()
-dir = os.listdir('/malay/')
-print(dir)
-data_fname = os.path.join('/malay', sys.argv[1])
+elif sys.argv[2] == 'floydhub':
+    # Load and preprocess dataset on floydhub
+    abs_path = Path('.').parent.absolute()
+    dir = os.listdir('/malay/')
+    print(dir)
+    data_fname = os.path.join('/malay', sys.argv[1])
 
 print('Reading from: {}'.format(data_fname))
 

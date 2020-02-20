@@ -3,6 +3,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 from pathlib import Path
 import os
 import sys
+import gc
 
 from .define_model import define_model
 from .encoding import prepare_token, encode_output, encode_sequences

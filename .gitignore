@@ -5,6 +5,8 @@
 /dataset/.floydexpt
 /dataset/.floydignorex
 /dataset/*ipynb
+/dataset/english-malay
+dataset/.ipynb_checkpoints
 .floydexpt
 .floydignore
 floyd.yml

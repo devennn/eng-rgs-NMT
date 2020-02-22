@@ -16,20 +16,20 @@ def evaluate_accuracy(model, tokenizer, sources, raw_dataset):
         actual.append([raw_target.split()])
         predicted.append(translation.split())
 
-    # calculate BLEU score
-    print('BLEU-1: %f' % corpus_bleu(actual, predicted,
-        weights=(1.0, 0, 0, 0),
-        smoothing_function=SmoothingFunction().method1)
-    )
-    print('BLEU-2: %f' % corpus_bleu(actual, predicted,
-        weights=(0.5, 0.5, 0, 0),
-        smoothing_function=SmoothingFunction().method1)
-    )
-    print('BLEU-3: %f' % corpus_bleu(actual, predicted,
-        weights=(0.3, 0.3, 0.3, 0),
-        smoothing_function=SmoothingFunction().method1)
-    )
-    print('BLEU-4: %f' % corpus_bleu(actual, predicted,
-        weights=(0.25, 0.25, 0.25, 0.25),
-        smoothing_function=SmoothingFunction().method1)
-    )
+    # # calculate BLEU score
+    # print('BLEU-1: %f' % corpus_bleu(actual, predicted,
+    #     weights=(1.0, 0, 0, 0),
+    #     smoothing_function=SmoothingFunction().method1)
+    # )
+    # print('BLEU-2: %f' % corpus_bleu(actual, predicted,
+    #     weights=(0.5, 0.5, 0, 0),
+    #     smoothing_function=SmoothingFunction().method1)
+    # )
+    # print('BLEU-3: %f' % corpus_bleu(actual, predicted,
+    #     weights=(0.3, 0.3, 0.3, 0),
+    #     smoothing_function=SmoothingFunction().method1)
+    # )
+    # print('BLEU-4: %f' % corpus_bleu(actual, predicted,
+    #     weights=(0.25, 0.25, 0.25, 0.25),
+    #     smoothing_function=SmoothingFunction().method1)
+    # )

@@ -5,10 +5,9 @@ import os
 import sys
 import gc
 
-from .define_model import define_model
+from .define_model import *
 from .encoding import prepare_token, encode_output, encode_sequences
 from .utils import load_clean_sentences
-from .memory import get_model_memory_usage
 
 def run_fit(model, X_train, y_train, X_test, y_test):
 
@@ -54,7 +53,7 @@ def run_train(full_path, train_path, test_path):
 	y_test = encode_output(y_test, eng_vocab_size)
 
 	# define model
-	model = define_model(
+	model = model_v1(
 		source_vocab=trn_vocab_size,
 		translate_vocab=eng_vocab_size,
 		source_timesteps=trn_len,
@@ -62,9 +61,7 @@ def run_train(full_path, train_path, test_path):
 		n_units=256,
 	)
 
-	# Check memory consumption
-	memory = get_model_memory_usage(batch_size, model)
-	print('Memory Usage: {}'.format(memory))
-	sys.exit()
+	model = model_v2(source_vocab=trn_vocab_size,
+		translate_vocab=eng_vocab_size, latent_dim=256)
 
 	run_fit(model, X_train, y_train, X_test, y_test)

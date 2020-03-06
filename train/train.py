@@ -43,6 +43,7 @@ def run_train(full_path, train_path, test_path):
 	print('English Vocabulary Size: %d' % eng_vocab_size)
 	print('TRANSLATED Vocabulary Size: %d' % trn_vocab_size)
 
+	print('==== Prepare training Data ===')
 	# prepare training data
 	X_train = encode_sequences(trn_token, trn_len, train[:, 1])
 	y_train = encode_sequences(eng_token, eng_len, train[:, 0])
@@ -60,8 +61,5 @@ def run_train(full_path, train_path, test_path):
 		translate_timesteps=eng_len,
 		n_units=256,
 	)
-
-	model = model_v2(source_vocab=trn_vocab_size,
-		translate_vocab=eng_vocab_size, latent_dim=256)
 
 	run_fit(model, X_train, y_train, X_test, y_test)

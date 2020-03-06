@@ -6,6 +6,7 @@
 /dataset/.floydignorex
 /dataset/*ipynb
 /dataset/english-malay
+/result/*
 dataset/.ipynb_checkpoints
 .floydexpt
 .floydignore

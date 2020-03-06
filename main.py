@@ -35,6 +35,7 @@ name3 = '{}_test.pkl'.format(fname[0])
 full_path = os.path.join(abs_path, 'clean_dataset', name1)
 train_path = os.path.join(abs_path, 'clean_dataset', name2)
 test_path = os.path.join(abs_path, 'clean_dataset', name3)
+
 train.run_train(full_path, train_path, test_path)
 
 # Evaluate

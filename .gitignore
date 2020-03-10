@@ -1,13 +1,7 @@
-/preprocess/__pycache__/
-/train/__pycache__/
 /clean_dataset/
-/dataset/.floyddata
-/dataset/.floydexpt
-/dataset/.floydignorex
-/dataset/*ipynb
-/dataset/english-malay
-/result/*
-dataset/.ipynb_checkpoints
+/dataset/
+/result/
+/src/__pycache__/
 .floydexpt
 .floydignore
 floyd.yml

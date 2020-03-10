@@ -9,24 +9,19 @@ from .define_model import *
 from .encoding import prepare_token, encode_output, encode_sequences
 from .utils import load_clean_sentences
 
+
 def run_fit(model, X_train, y_train, X_test, y_test):
 
 	path = Path('.').parent.absolute()
-	filename = os.path.join(path, 'result', 'model.h5')
-	checkpoint = ModelCheckpoint(
-		filename,
-		monitor='val_loss',
-		verbose=2,
-		mode='min'
+	fname = 'weights-improvement-{epoch:02d}-{val_accuracy:.2f}.hdf5'
+	filename = os.path.join(path, 'result', fname)
+	
+	checkpoint = ModelCheckpoint(filename, monitor='val_accuracy',
+		verbose=2, mode='max'
 	)
 
-	model.fit(
-		X_train, y_train,
-		epochs=10,
-		batch_size=10,
-	    validation_data=(X_test, y_test),
-		callbacks=[checkpoint],
-		verbose=2
+	model.fit(X_train, y_train, epochs=10, batch_size=10,
+	    validation_data=(X_test, y_test), callbacks=[checkpoint], verbose=2
 	)
 
 def run_train(full_path, train_path, test_path):
